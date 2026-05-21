@@ -1,0 +1,92 @@
+/* login-estilos.css */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f8f9fa !important;
+    background-image: radial-gradient(#d1d1d1 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 24px;
+}
+
+.cherry-logo {
+    color: #C21833;
+    font-weight: 900;
+    letter-spacing: -2px;
+    font-size: 2.8rem;
+}
+
+.ls-2 {
+    letter-spacing: 2px;
+}
+
+/* Inputs mejorados */
+.form-control, .input-group-text {
+    border-color: #eee;
+    padding: 12px;
+    background-color: #fbfbfb;
+}
+
+.form-control:focus {
+    border-color: #C21833;
+    box-shadow: none;
+    background-color: #fff;
+}
+
+/* El Botón Cherry Premium */
+.btn-cherry {
+    background-color: #C21833;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 15px rgba(194, 24, 51, 0.2);
+}
+
+.btn-cherry:hover {
+    background-color: #a0142a;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(194, 24, 51, 0.3);
+    color: white;
+}
+
+.btn-cherry:active {
+    transform: translateY(0);
+}
+
+/* Mensajes de validación */
+#mensaje.text-danger { color: #dc3545 !important; }
+#mensaje.text-success { color: #198754 !important; }
+
+
+/* Añadir esto si el card se corta en pantallas pequeñas */
+.vh-100 {
+    min-height: 100vh;
+    height: auto !important;
+    padding: 40px 0;
+}
+
+/* Efectos de Hover para el Index */
+.footer-link {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-link:hover {
+    color: #C21833 !important;
+    transform: translateX(5px);
+}
+
+.hover-link:hover {
+    color: #C21833 !important;
+}
+
+/* Ajuste del contador del carrito para que no tape el icono */
+#cart-count {
+    padding: 0.35em 0.5em;
+}

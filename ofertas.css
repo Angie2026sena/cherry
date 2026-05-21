@@ -1,0 +1,299 @@
+:root {
+    --cherry: #C21833;
+    --rosa-pastel: #F8BBD0;
+    --negro: #111111;
+    --gris-fondo: #F5F5F5;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--gris-fondo);
+}
+
+.ls-2 { letter-spacing: 2px; }
+
+/* HERO BANNER */
+.hero-offers {
+    min-height: 80vh;
+    background: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(194, 24, 51, 0.8) 0%, rgba(17, 17, 17, 0.6) 100%);
+}
+
+.btn-cherry {
+    background-color: var(--cherry);
+    color: white;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-cherry:hover {
+    background-color: #a0142b;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(194, 24, 51, 0.3);
+}
+
+/* COUNTDOWN CARDS */
+.countdown-container {
+    background: white;
+    margin-top: -80px;
+    position: relative;
+    z-index: 10;
+}
+
+.timer-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+}
+
+.timer-card h2 { color: var(--cherry); font-weight: 700; margin-bottom: 0; }
+.timer-card small { font-size: 10px; color: #666; font-weight: 600; }
+
+/* FILTROS */
+.btn-filter {
+    border: none;
+    background: white;
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-weight: 500;
+    color: #555;
+    transition: 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-filter.active {
+    background: var(--cherry);
+    color: white;
+}
+
+/* CARDS PRODUCTOS */
+/* Contenedor principal de la tarjeta */
+.product-card {
+    height: 100%; /* Permite que todas las tarjetas en la fila tengan la misma altura */
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* Estandarizar el tamaño de la imagen */
+.img-container {
+    width: 100%;
+    height: 350px; /* Altura fija para todas las fotos */
+    overflow: hidden;
+    position: relative;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la imagen sin deformarla para llenar el espacio */
+    transition: transform 0.5s ease;
+}
+
+/* Cuerpo de la tarjeta (Texto y Precios) */
+.product-info {
+    padding: 1.5rem;
+    flex-grow: 1; /* Empuja el botón hacia el fondo si hay poco texto */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+/* Limitar el nombre del producto a una sola línea para evitar saltos */
+.product-info h6 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Añade "..." si el nombre es muy largo */
+}
+
+/* Botón de agregar siempre alineado al fondo */
+.btn-agregar {
+    background-color: #e7495e; /* Negro mate suave de la imagen */
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;       /* Forma de píldora total */
+    padding: 12px 25px;        /* Espaciado interno generoso */
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;                 /* Espacio entre la bolsa y el texto */
+    width: 100%;               /* Para que ocupe todo el ancho de la card */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* El icono de la bolsa */
+.btn-agregar i {
+    font-size: 1.1rem;
+    margin-top: -2px;          /* Ajuste fino de alineación vertical */
+}
+
+/* Efecto al pasar el mouse */
+.btn-agregar:hover {
+    background-color: #000000;
+    transform: translateY(-2px); /* Pequeño salto hacia arriba */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+}
+
+/* Efecto cuando se hace clic */
+.btn-agregar:active {
+    transform: scale(0.98);
+}
+.badge-discount {
+    position: absolute;
+    top: 15px; left: 15px;
+    background: var(--cherry);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 5;
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: white;
+    border: none;
+    width: 35px; height: 35px;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.overlay-btns {
+    position: absolute;
+    bottom: -50px; left: 0; width: 100%;
+    transition: 0.3s;
+    display: flex; justify-content: center;
+    padding-bottom: 15px;
+}
+
+.product-card:hover .overlay-btns { bottom: 0; }
+
+/* Precio actual (Resaltado) */
+.price-container .text-cherry, 
+.price-container span:last-child {
+    color: #111111 !important; /* Negro suave premium */
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Precio antiguo (Tachado) */
+.price-container .text-muted, 
+.price-container span:first-child {
+    color: #999999 !important; /* Gris claro */
+    text-decoration: line-through;
+    margin-right: 8px;
+}
+/* Botón de Vista Rápida */
+.overlay-btns .btn-white {
+    background-color: #ffffff !important;
+    color: #111111 !important;
+    border: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Efecto al pasar el mouse (Hover) */
+.overlay-btns .btn-white:hover {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+    transform: scale(1.05);
+}
+
+/* Color del icono del ojo */
+.overlay-btns .btn-white i {
+    color: #C21833; /* Rojo Cherry para el icono */
+    margin-right: 5px;
+}
+/* Icono de bolsa flotante */
+.cart-icon-wrapper {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #111;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: 0.3s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.cart-icon-wrapper:hover {
+    transform: scale(1.1);
+    background: #C21833;
+}
+
+#cart-count {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 12px;
+}
+
+/* Item dentro del carrito */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.cart-item img {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.size-btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.2s;
+    border: 1px solid #ddd !important;
+}
+
+.size-btn:hover {
+    border-color: #111 !important;
+    background-color: #f8f8f8;
+    color: #111;
+}
+
+#quickViewModal .modal-content {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.ls-2 { letter-spacing: 2px; }

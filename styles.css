@@ -1,0 +1,883 @@
+:root {
+    --primary: #c21833;
+    --secondary: #f8bbd0;
+    --dark: #111;
+    --cherry: #a9001c;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* TOP BAR */
+.top-bar {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 8px;
+}
+
+/* NAV */
+.logo {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 28px;
+}
+.nav-icons {
+    display: flex;
+
+}
+
+.nav-icons i {
+    display: flex;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.3 ease;
+    align-items: center;
+    gap: 15px;
+}
+.nav-icons i:hover {
+    color: var(--cherry); /* Efecto al pasar el mouse */
+}
+
+/* Ajuste específico para el carrito y su contador */
+.cart-icon {
+    display: inline-flex !important;
+    align-items: center;
+    position: relative;
+    gap: 5px; /* Espacio entre la bolsa y el número */
+}
+
+#cart-count {
+  font-family: sans-serif;
+    line-height: 1;
+    transform: translateY(1px);
+}
+
+/* --- ESTILOS COMPLEMENTARIOS PARA EL CARRUSEL CHERRY --- */
+/* Forzar una altura elegante y manejo de imágenes */
+.carousel-hero-img {
+    height: 70vh; /* Ocupa el 70% de la pantalla, ideal para no esconder los productos de abajo */
+    object-fit: cover; /* Evita que las imágenes se deformen */
+    object-position: center;
+    filter: brightness(0.9); /* Oscurece levemente la foto para que el texto blanco resalte */
+}
+
+/* Tipografías dentro del carrusel */
+.carousel-caption {
+    bottom: 25% !important; /* Sube el texto para que respire */
+    z-index: 10;
+}
+
+.carousel-caption .small-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #ffffff;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.carousel-caption .main-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    color: #ffffff;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+/* El botón flotante del Carrusel */
+.btn-carousel {
+    display: inline-block;
+    padding: 12px 35px;
+    background-color: #ffffff;
+    color: #1a1a1a !important;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-carousel:hover {
+    background-color: #C21833; /* Cambia a rojo Cherry al pasar el mouse */
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(194, 24, 51, 0.3);
+}
+
+/* Modificar los controles e indicadores de Bootstrap para que sean minimalistas */
+.carousel-indicators [data-bs-target] {
+    width: 30px !important;
+    height: 3px !important;
+    background-color: #ffffff !important;
+}
+
+.carousel-indicators .active {
+    background-color: #C21833 !important; /* Línea activa en rojo Cherry */
+}
+
+/* Flechas laterales sutiles */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(0);
+    transition: all 0.3s;
+}
+
+.carousel-control-next:hover .carousel-control-next-icon,
+.carousel-control-prev:hover .carousel-control-prev-icon {
+    filter: invert(13%) sepia(85%) saturate(5454%) hue-rotate(345deg) brightness(84%) contrast(97%); 
+    /* Este filtro convierte la flecha blanca al color exacto #C21833 al hacer hover */
+}
+
+/* Alineación limpia para pantallas grandes */
+@media (min-width: 768px) {
+    .start-5 {
+        left: 8% !important;
+    }
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 90vh;
+    background: url("images/banner\ index.png") center/cover;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.hero-content {
+    position: relative;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hero h1 {
+    font-size: 70px;
+}
+
+.hero span {
+    color: var(--secondary);
+}
+
+/* Estilos para los botones del Hero */
+.btn-hero-primary {
+    background-color: var(--primary); /* El rojo de Cherry */
+    color: white;
+    border: 2px solid var(--primary);
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-hero-primary:hover {
+    background-color: white;
+    color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(194, 24, 51, 0.3);
+}
+
+.rating {
+    margin-top: 20px;
+}
+
+/* --- SECCIÓN STATS --- */
+.stats {
+    padding: 60px 0;
+    background-color: #fff; /* Fondo limpio como en la guía */
+    border-bottom: 1px solid #f0f0f0; /* Línea sutil de separación */
+}
+
+.stats h3 {
+    font-size: 42px; /* Números grandes y llamativos */
+    font-weight: 700;
+    color: var(--dark); /* O usa var(--cherry) si quieres que los números sean rojos */
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+}
+
+.stats p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #888; /* Gris suave para las etiquetas */
+    text-transform: uppercase; /* Todo en mayúsculas como en el modelo */
+    letter-spacing: 2px; /* Un poco de espacio entre letras para elegancia */
+    margin-bottom: 0;
+}
+
+/* Ajuste de responsividad para móviles */
+@media (max-width: 768px) {
+    .stats h3 {
+        font-size: 32px;
+    }
+    .stats p {
+        font-size: 12px;
+    }
+    .stats .col {
+        margin-bottom: 20px;
+    }
+}
+
+/* PRODUCTOS */
+
+.filtros button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background: #eee;
+}
+
+.filtros .active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Contenedor de la Tarjeta */
+.product-card-v2 {
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de la imagen y efectos */
+.product-card-v2 .img-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px; /* Bordes redondeados sutiles */
+    background-color: #f8f8f8;
+}
+
+.product-card-v2 .img-container img {
+    width: 100%;
+    transition: transform 0.5s ease;
+}
+
+/* Contenedor de la imagen con tamaño fijo */
+.product-card-v2 .img-container {
+    position: relative;
+    width: 100%;
+    /* Definimos la proporción: 3 es ancho, 4 es alto (ideal para ropa) */
+    aspect-ratio: 3 / 4; 
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: #f9f9f9; /* Color de fondo si la imagen no llena el espacio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* La imagen se ajusta sin recortarse */
+.product-card-v2 .img-container img {
+    width: 100%;
+    height: 100%;
+    /* 'contain' hace que se vea TODA la imagen sin cortes */
+    object-fit: contain; 
+    transition: transform 0.5s ease;
+    padding: 5px; /* Un pequeño margen interno para que no toque los bordes */
+}
+
+/* Efecto hover suave */
+.product-card-v2:hover img {
+    transform: scale(1.03);
+}
+
+/* Badge Roja de Descuento (Estilo exacto a la imagen) */
+.badge-tag-discount {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    transform: none;
+    background-color: #ce2020; /* Rojo vibrante */
+    color: white;
+    padding: 5px 12px;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 2;
+    border-radius: 50px; /* Bordes un poco redondeados como en las imágenes de referencia */
+    text-transform: uppercase; /* Para que resalte más como en el modelo */
+}
+
+/* Overlay que aparece al pasar el mouse */
+.hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Fondo muy sutil */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.product-card-v2:hover .hover-overlay {
+    opacity: 1;
+}
+
+.product-card-v2:hover img {
+    transform: scale(1.05);
+}
+
+/* Botón Vista Rápida (Blanco con borde negro) */
+.btn-quick-view {
+    background-color: #f1f0f0; /* El blanco ligeramente grisáceo de la imagen */
+    color: #1a2b3c;            /* Azul oscuro profundo para el texto e icono */
+    border: none;
+    border-radius: 50px;       /* Forma de cápsula perfecta */
+    padding: 10px 24px;        /* Espaciado interno equilibrado */
+    font-size: 15px;           /* Tamaño de letra legible */
+    font-weight: 500;          /* Grosor de letra medio */
+    display: flex;
+    align-items: center;
+    gap: 10px;                 /* Espacio exacto entre el ojo y el texto */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Sombra muy sutil */
+    text-transform: none;      /* Importante: No es todo en mayúsculas */
+}
+
+/* El icono del ojo */
+.btn-quick-view i {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: end;
+}
+
+/* Efecto al pasar el mouse */
+.btn-quick-view:hover {
+    background-color: #ffffff; /* Se aclara un poco al hover */
+    transform: scale(1.02);    /* Crece casi imperceptiblemente */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+/* Estilos para el Modal de Vista Rápida */
+#quickViewModal .modal-content {
+    background-color: #ffffff;
+}
+
+/* Botones de tallas circulares */
+.size-btn-modal {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: 0.2s all ease;
+    border: 1px solid #e0e0e0 !important;
+}
+
+.size-btn-modal:hover, .size-btn-modal.active {
+    background-color: #111111 !important;
+    color: #ffffff !important;
+    border-color: #111111 !important;
+}
+
+/* Asegurar que la imagen ocupe todo el espacio */
+.qv-image-container {
+    background-color: #f8f8f8;
+}
+
+/* Estilo del botón agregar dentro del modal */
+#qv-add-to-cart {
+    background-color: #1a1c1e !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 50px !important;
+    font-weight: 500;
+    transition: 0.3s transform ease;
+}
+
+#qv-add-to-cart:hover {
+    transform: translateY(-3px);
+    background-color: #000000 !important;
+}
+
+/* Tipografías de los textos */
+.category-text {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.product-title {
+    font-size: 18px;
+    color: #1a1a1a;
+}
+
+.current-price {
+    font-size: 18px;
+    color: var(--cherry); /* Tu color rojo Cherry */
+}
+
+.old-price {
+    color: #bbb;
+    font-size: 14px;
+}
+
+/* Botón Agregar al carrito (Rojo sólido con bordes redondeados) */
+/* --- BOTÓN CHERRY PREMIUM --- */
+.btn-cherry-cart {
+    /* Colores base */
+    background-color: #A81329; /* Un rojo cereza quemado más sofisticado */
+    color: #ffffff !important;
+    
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Separa ligeramente las letras para un look limpio */
+    
+    /* Estructura y Bordes */
+    border: 2px solid transparent;
+    border-radius: 8px; /* Bordes sutilmente suavizados, no tan redondos */
+    padding: 14px 28px; /* Más empaque y presencia */
+    
+    /* Alineación del icono y texto */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Espacio perfecto entre la bolsa y el texto */
+    
+    /* Efectos visuales */
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(168, 19, 41, 0.15); /* Sombra suave del color del botón */
+    
+    /* Transición suave para el efecto Hover */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* --- EFECTO HOVER (AL PASAR EL MOUSE) --- */
+.btn-cherry-cart:hover {
+    background-color: transparent;
+    color: #A81329 !important;
+    border-color: #A81329; /* Se convierte en un elegante botón outline */
+    box-shadow: 0 6px 20px rgba(168, 19, 41, 0.25);
+    transform: translateY(-2px); /* Se eleva sutilmente dando sensación de interactividad */
+}
+
+/* --- EFECTO ACTIVE (AL HACER CLIC) --- */
+.btn-cherry-cart:active {
+    transform: translateY(1px); /* Baja un poco simulando un botón real físicos */
+    box-shadow: 0 2px 10px rgba(168, 19, 41, 0.15);
+}
+/* --- BOTÓN VER TODA LA COLECCIÓN --- */
+.container-boton {
+    display: flex;            /* Activa el modo flexible */
+    justify-content: center;   /* Centra horizontalmente */
+    align-items: center;       /* Centra verticalmente */
+    width: 100%;               /* Asegura que ocupe todo el ancho */
+    margin: 40px 0;            /* Espacio arriba y abajo del botón */
+    padding: 20px;
+}
+.btn-outline-main {
+    background-color: transparent; /* Fondo transparente para que sea elegante */
+    color: #000; /* Texto negro profundo */
+    border: 2px solid #000; /* Borde negro sólido */
+    padding: 15px 30px; /* Espaciado interno amplio (largo y cómodo) */
+    font-size: 13px; /* Tamaño de letra pequeño pero legible */
+    font-weight: 700; /* Letra negrita */
+    text-transform: uppercase; /* Siempre en mayúsculas como en el modelo */
+    letter-spacing: 2px; /* Espacio entre letras para toque de diseño */
+    border-radius: 50px; /* Bordes totalmente redondeados (estilo cápsula) */
+    transition: all 0.4s ease; /* Transición suave para el hover */
+    cursor: pointer;
+    display: inline-block;
+}
+/* Efecto al pasar el mouse (Hover) */
+.btn-outline-main:hover {
+    background-color: #000; /* Se llena de negro */
+    color: #fff; /* El texto cambia a blanco */
+    transform: translateY(-3px); /* Se eleva un poquito */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra sutil al elevarse */
+}
+
+/* Efecto al hacer clic */
+.btn-outline-main:active {
+    transform: translateY(-1px);
+}
+
+
+
+/* CATEGORIAS */
+.cat {
+    transition: transform 0.3 ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer
+}
+
+.cat img {
+    width: 100%;
+    transition: 0.3s;
+}
+
+.cat:hover img {
+    transform: scale(1.1);
+}
+
+.cat-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-size: 20px;
+    transition: background 0.3s ease;
+}
+
+.cat:hover .cat-overlay {
+    background: rgba(0, 0, 0, 0.4); /* Oscurece un poco el fondo al pasar el mouse */
+}
+/* FOOTER */
+.footer {
+    background: var(--dark);
+    color: rgb(181, 177, 177);
+    padding: 50px;
+}
+
+/* SCROLL */
+#scrollTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary);
+    border-radius: 50%;
+    padding: 10px;
+    color: white;
+}
+
+/* BANNER DE OFERTA */
+.promo-card {
+    background: linear-gradient(135deg, #c21833 0%, #e91e63 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.timer-box {
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 60px;
+}
+
+.discount-circle {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed rgba(255,255,255,0.5);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.discount-circle span { font-size: 10px; }
+.discount-circle {
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+}
+
+/* Mejora para el texto italic que usas en Cherry */
+.promo-text p {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* TESTIMONIOS */
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--cherry);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.testimonial-card {
+    transition: transform 0.3s;
+    border: 1px solid #eee;
+}
+
+.testimonial-card:hover { transform: translateY(-10px); }
+
+/* Contenedor principal que permite el scroll horizontal */
+.testimonios-wrapper {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    display: flex;
+    -ms-overflow-style: none;  /* Ocultar barra en IE */
+    scrollbar-width: none;  /* Ocultar barra en Firefox */
+}
+
+.testimonios-wrapper::-webkit-scrollbar {
+    display: none; /* Ocultar barra en Chrome/Safari */
+}
+
+/* Tamaño de cada tarjeta */
+.testimonial-item {
+    min-width: 300px;
+    max-width: 300px;
+    flex-shrink: 0;
+}
+
+/* Estilo de los Avatares (VR, VM, CR) */
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #b1001d; /* Rojo oscuro Cherry */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* Botones de Flechas */
+.btn-scroll {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-scroll:hover { background: #f8f8f8; color: #b1001d; }
+.btn-scroll.left { left: -20px; }
+.btn-scroll.right { right: -20px; }
+
+@media (max-width: 768px) {
+    .btn-scroll { display: none; } /* En móvil se usa el dedo para deslizar */
+}
+
+/* FOOTER NEWSLETTER */
+.newsletter-box input::placeholder { color: #b06161; }
+
+/* Seleccionamos específicamente los elementos dentro del footer profesional */
+.footer-pro {
+    background-color: #1a1a1a; /* El color oscuro que ya tienes */
+    color: #ffffff; /* Color de texto base blanco */
+}
+
+/* Forzar que todos los párrafos y textos pequeños se vean */
+.footer-pro p, 
+.footer-pro span, 
+.footer-pro small {
+    color: #b0b0b0 !important; /* Un gris claro para que no canse la vista */
+}
+
+/* Importante: Estilo para los enlaces (links) */
+.footer-pro ul li, 
+.footer-pro a {
+    color: #ffffff !important;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* Efecto al pasar el mouse por los enlaces */
+.footer-pro a:hover {
+    color: var(--cherry) !important; /* Cambian al rojo de tu marca */
+}
+
+/* Estilo para los títulos de las columnas (Comprar, Ayuda, etc.) */
+.footer-pro h6 {
+    color: #ffffff !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+
+@keyframes bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}
+
+.bounce-effect {
+    animation: bounce 0.3s ease-out;
+    color: #c50b0b !important;
+}
+
+/* Estilo para los items dentro del carrito lateral */
+.cart-item img {
+    border: 1px solid #eee;
+}
+
+.cart-item h6 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Tarjetas de productos en categorías */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #fff;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+/* Botón Añadir al carrito estilo Cherry */
+.btn-agregar {
+    background-color: #C21833; /* Rojo Cherry */
+    color: white;
+    border: none;
+    padding: 10px;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.btn-agregar:hover {
+    background-color: #a0142a;
+    color: white;
+}
+
+/* Etiquetas (Badge) */
+.badge-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #000;
+    color: #fff;
+    padding: 5px 12px;
+    font-size: 10px;
+    text-transform: uppercase;
+    border-radius: 20px;
+}
+
+/*FILTROS MUJER*/
+/* Transición suave para el filtrado de productos Cherry */
+.producto-item {
+    transition: opacity 0.3s ease, transform 0.3s ease, display 0.3s ease;
+    will-change: opacity, transform;
+}
+
+/*ZAPATOS*/
+
+/* Botón flotante Cherry */
+.cart-floating-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #C21833; /* Rojo Cherry */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.badge-count {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: black;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+/* Panel Lateral */
+.cherry-cart {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Escondido por defecto */
+    width: 380px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    z-index: 1050;
+    transition: 0.4s all ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.cherry-cart.active {
+    right: 0;
+}
+
+.cart-header {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Solo afecta a los botones que estén DENTRO de #side-cart */
+#side-cart .btn-checkout {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    padding: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+#side-cart .btn-view-cart {
+    background-color: transparent;
+    color: #000;
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+.btn-close-cart {
+    background: none;
+    border: 1px solid #000;
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-close-cart:hover {
+    background-color: #000;
+    color: #fff;
+}

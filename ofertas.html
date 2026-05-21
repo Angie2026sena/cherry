@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas Especiales | Cherry Premium Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="ofertas.css">
+    <link rel =stylesheet href="estilos-img.css">
+</head>
+<body>
+
+
+      
+    <header class="hero-offers d-flex align-items-center">
+        <div class="overlay"></div>
+        <div class="container position-relative text-white text-center">
+             <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center text-uppercase" style="font-size: 0.8rem; letter-spacing: 2px;">
+                <li class="breadcrumb-item"><a href="index.html" class="text-white-50 text-decoration-none">Inicio</a></li>
+                <li class="breadcrumb-item active text-white" aria-current="page">Ofertas</li>
+            </ol>
+        </nav>
+            <span class="badge bg-cherry mb-3 px-3 py-2 text-uppercase ls-2">Special Sale</span>
+            <h1 class="display-1 fw-bold mb-0">HASTA 70% OFF</h1>
+            <p class="lead mb-4 opacity-75">Piezas premium de moda femenina con descuentos exclusivos por tiempo limitado.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="#productos-oferta" class="btn btn-cherry btn-lg rounded-pill px-5">Comprar Ahora</a>
+                <button class="btn btn-outline-light btn-lg rounded-pill px-5">Ver Catálogo</button>
+            </div>
+        </div>
+    <div class="cart-icon-wrapper" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart">
+    <i class="bi bi-bag-fill"></i>
+    <span id="cart-count" class="badge rounded-pill bg-danger">0</span>
+</div>
+
+<div class="offcanvas offcanvas-end rounded-start-5" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+    <div class="offcanvas-header border-bottom p-4">
+        <h5 class="offcanvas-title fw-bold" id="offcanvasCartLabel">Tu Carrito 🍒</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-4">
+        <div id="cart-items-container">
+            <p class="text-center text-muted mt-5">Tu carrito está vacío.</p>
+        </div>
+    </div>
+    <div class="offcanvas-footer p-4 border-top">
+        <div class="d-flex justify-content-between mb-3 fw-bold fs-5">
+            <span>Total:</span>
+            <span id="cart-total">$0</span>
+        </div>
+        <a href="checkout.html" class="btn btn-danger w-100 rounded-pill mb-2">Finalizar pedido</a>
+    </div>
+</div>
+    </header>
+
+    <section class="countdown-section py-5">
+        <div class="container">
+            <div class="countdown-container shadow-lg rounded-5 p-4 text-center">
+                <p class="mb-4 fw-bold text-uppercase ls-2">La oferta termina en:</p>
+                <div class="row g-3 justify-content-center" id="timer">
+                    <div class="col-3 col-md-2">
+                        <div class="timer-card"><h2 id="days">03</h2><small>DÍAS</small></div>
+                    </div>
+                    <div class="col-3 col-md-2">
+                        <div class="timer-card"><h2 id="hours">15</h2><small>HORAS</small></div>
+                    </div>
+                    <div class="col-3 col-md-2">
+                        <div class="timer-card"><h2 id="minutes">18</h2><small>MIN</small></div>
+                    </div>
+                    <div class="col-3 col-md-2">
+                        <div class="timer-card"><h2 id="seconds">55</h2><small>SEG</small></div>
+                    </div>
+                </div>
+                <div class="stock-info mt-4">
+                    <div class="progress mx-auto mb-2" style="max-width: 400px; height: 8px;">
+                        <div class="progress-bar bg-cherry" style="width: 23%"></div>
+                    </div>
+                    <small class="text-muted">Stock disponible: <span class="text-danger fw-bold">50% restante</span></small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="filters-section py-4">
+        <div class="container d-flex justify-content-center flex-wrap gap-2">
+            <button class="btn btn-filter active" onclick="filterProducts('todos')">Todos</button>
+            <button class="btn btn-filter" onclick="filterProducts('vestidos')">Vestidos</button>
+            <button class="btn btn-filter" onclick="filterProducts('tops')">Tops</button>
+            <button class="btn btn-filter" onclick="filterProducts('conjuntos')">Conjuntos</button>
+            <button class="btn btn-filter" onclick="filterProducts('sudaderas')">Sudaderas</button>
+            <button class="btn btn-filter" onclick="filterProducts('zapatos')">Zapatos</button>
+        </div>
+    </section>
+
+    <main id="productos-oferta" class="py-5">
+        <div class="container">
+            <div class="row g-4" id="grid-productos">
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-category="vestidos">
+                    <div class="product-card shadow-sm">
+                        <div class="img-container">
+                            <span class="badge-discount">-50%</span>
+                            <img src="imagenes/mas vendido 2-vestido negro.webp" class="img-fluid" alt="Vestido">
+                            <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+                            <div class="overlay-btns">
+                                <button class="btn btn-white btn-sm rounded-pill"><i class="bi bi-eye"></i> Vista rápida</button>
+                            </div>
+                        </div>
+                        <div class="p-3 text-center">
+                            <small class="text-uppercase text-muted">Vestidos</small>
+                            <h6 class="fw-bold mt-1">Vestido Negro Noche</h6>
+                            <div class="price-container">
+                                <span class="text-decoration-line-through text-muted small">$90.900</span>
+                                <span class="text-cherry fw-bold">$72.900</span>
+                            </div>
+                            <button class="btn-agregar">
+                              <i class="bi bi-bag"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+           
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-category="tops">
+                    <div class="product-card shadow-sm">
+                        <div class="img-container">
+                            <span class="badge-discount">-40%</span>
+                            <img src="imagenes/oferta 1- conjunto falda y top de tiras.webp" class="img-fluid" alt="Vestido">
+                            <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+                            <div class="overlay-btns">
+                                <button class="btn btn-white btn-sm rounded-pill"><i class="bi bi-eye"></i> Vista rápida</button>
+                            </div>
+                        </div>
+                        <div class="p-3 text-center">
+                            <small class="text-uppercase text-muted">Tops</small>
+                            <h6 class="fw-bold mt-1">Conjunto Twist Noir</h6>
+                            <div class="price-container">
+                                <span class="text-decoration-line-through text-muted small">$75.900</span>
+                                <span class="text-cherry fw-bold">$52.900</span>
+                            </div>
+                            <button class="btn-agregar">
+                              <i class="bi bi-bag"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-category="tops">
+                    <div class="product-card shadow-sm">
+                        <div class="img-container">
+                            <span class="badge-discount">-40%</span>
+                            <img src="imagenes/oferta 2 conjunto falda y tiras blanco.webp" class="img-fluid" alt="Vestido">
+                            <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+                            <div class="overlay-btns">
+                                <button class="btn btn-white btn-sm rounded-pill"><i class="bi bi-eye"></i> Vista rápida</button>
+                            </div>
+                        </div>
+                        <div class="p-3 text-center">
+                            <small class="text-uppercase text-muted">Tops</small>
+                            <h6 class="fw-bold mt-1">Sweet Blossom Set Blanco</h6>
+                            <div class="price-container">
+                                <span class="text-decoration-line-through text-muted small">$85.900</span>
+                                <span class="text-cherry fw-bold">$70.000</span>
+                            </div>
+                            <button class="btn-agregar">
+                              <i class="bi bi-bag"></i> Agregar
+                            </button>
+                          </div>
+                    </div>  
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-category="conjuntos">
+                    <div class="product-card shadow-sm">
+                        <div class="img-container">
+                            <span class="badge-discount">-30%</span>
+                            <img src="imagenes/oferta 3- conjunto casual adolescentes.webp" class="img-fluid" alt="Vestido">
+                            <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+                            <div class="overlay-btns">
+                                <button class="btn btn-white btn-sm rounded-pill"><i class="bi bi-eye"></i> Vista rápida</button>
+                            </div>
+                        </div>
+                        <div class="p-3 text-center">
+                            <small class="text-uppercase text-muted">Conjuntos</small>
+                            <h6 class="fw-bold mt-1">Conjunto Bloom Vibes-Azul Noche</h6>
+                            <div class="price-container">
+                                <span class="text-decoration-line-through text-muted small">$60.900</span>
+                                <span class="text-cherry fw-bold">$42.000</span>
+                            </div>
+                            <button class="btn-agregar">
+                              <i class="bi bi-bag"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-category="conjuntos">
+                    <div class="product-card shadow-sm">
+                        <div class="img-container">
+                            <span class="badge-discount">-50%</span>
+                            <img src="imagenes/oferta-4-short-y-camisa-con-estampado.webp" class="img-fluid" alt="Conjunto">
+                            <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+                            <div class="overlay-btns">
+                                <button class="btn btn-white btn-sm rounded-pill"><i class="bi bi-eye"></i> Vista rápida</button>
+                            </div>
+                        </div>
+                        <div class="p-3 text-center">
+                            <small class="text-uppercase text-muted">Conjuntos</small>
+                            <h6 class="fw-bold mt-1">Set New York Vibes</h6>
+                            <div class="price-container">
+                                <span class="text-decoration-line-through text-muted small">$90.900</span>
+                                <span class="text-cherry fw-bold">$45.000</span>
+                            </div>
+                            <button class="btn-agregar">
+                              <i class="bi bi-bag"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-category="zapatos">
+                    <div class="product-card shadow-sm">
+                        <div class="img-container">
+                            <span class="badge-discount">-25%</span>
+                            <img src="imagenes/oferta-5-zapatos-populares.webp" class="img-fluid" alt="Vestido">
+                            <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+                            <div class="overlay-btns">
+                                <button class="btn btn-white btn-sm rounded-pill"><i class="bi bi-eye"></i> Vista rápida</button>
+                            </div>
+                        </div>
+                        <div class="p-3 text-center">
+                            <small class="text-uppercase text-muted">Zapatos</small>
+                            <h6 class="fw-bold mt-1">Sneakers Urban Vibe</h6>
+                            <div class="price-container">
+                                <span class="text-decoration-line-through text-muted small">$90.900</span>
+                                <span class="text-cherry fw-bold">$67.500</span>
+                            </div>
+                            <button class="btn-agregar">
+                              <i class="bi bi-bag"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 product-item" data-category="sudaderas">
+                    <div class="product-card shadow-sm">
+                        <div class="img-container">
+                            <span class="badge-discount">Liquidacion</span>
+                            <img src="imagenes/oferta-6-sudadera.webp" class="img-fluid" alt="Vestido">
+                            <button class="wishlist-btn"><i class="bi bi-heart"></i></button>
+                            <div class="overlay-btns">
+                                <button class="btn btn-white btn-sm rounded-pill"><i class="bi bi-eye"></i> Vista rápida</button>
+                            </div>
+                        </div>
+                        <div class="p-3 text-center">
+                            <small class="text-uppercase text-muted">Sudadera</small>
+                            <h6 class="fw-bold mt-1">Sudadera Urban Classic</h6>
+                            <div class="price-container">
+                                <span class="text-decoration-line-through text-muted small">$50.000</span>
+                                <span class="text-cherry fw-bold">$39.000</span>
+                            </div>
+                            <button class="btn-agregar">
+                              <i class="bi bi-bag"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>    
+
+        </div>
+    </main>
+<!-- Modal de Vista Rápida -->
+<div class="modal fade" id="quickViewModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-5 border-0 overflow-hidden">
+            <div class="modal-body p-0">
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <img id="qv-img" src="" class="img-fluid h-100 w-100" style="object-fit: cover; min-height: 400px;">
+                    </div>
+                    <div class="col-md-6 p-4 p-lg-5 d-flex flex-column justify-content-center">
+                        <small id="qv-cat" class="text-uppercase text-muted ls-2 fw-bold"></small>
+                        <h2 id="qv-name" class="fw-bold my-2"></h2>
+                        <div class="qv-price mb-3">
+                            <span id="qv-price-new" class="fs-3 fw-bold text-dark"></span>
+                            <span id="qv-price-old" class="text-muted text-decoration-line-through ms-2"></span>
+                        </div>
+                        <p class="text-muted small">Nuestra prenda estrella diseñada para resaltar tu estilo con la calidad premium de Cherry. Tela suave, duradera y con el ajuste perfecto.</p>
+                        
+                        <div class="mb-4">
+                            <label class="fw-bold small mb-2 d-block">SELECCIONA TU TALLA:</label>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-dark rounded-circle size-btn">S</button>
+                                <button class="btn btn-outline-dark rounded-circle size-btn">M</button>
+                                <button class="btn btn-outline-dark rounded-circle size-btn">L</button>
+                            </div>
+                        </div>
+
+                        <button class="btn-agregar py-3" id="qv-add-btn">
+                            <i class="bi bi-bag"></i> Agregar al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="ofertas.js"></script>
+</body>
+</html>

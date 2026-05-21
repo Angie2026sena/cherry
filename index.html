@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cherry Fashion</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="estilos-img.css">
+</head>
+
+<div class="modal fade" id="productModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-body row">
+        <div class="col-md-6">
+          <img id="modal-img" class="img-fluid">
+        </div>
+
+        <div class="col-md-6">
+          <h3 id="modal-title"></h3>
+          <p id="modal-price"></p>
+
+          <button class="btn btn-main w-100" onclick="addToCartFromModal()">
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Carrito Lateral (Offcanvas) -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+  <div class="offcanvas-header border-bottom">
+    <h5 class="offcanvas-title fw-bold" id="offcanvasCartLabel">TU CARRITO <span class="text-danger">CHERRY</span></h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div id="cart-items-container">
+        <!-- Aquí se verán los productos agregados -->
+        <p class="text-muted text-center mt-5">Tu carrito está vacío.</p>
+    </div>
+  </div>
+   <div class="offcanvas-footer p-3 border-top">
+    <div class="d-flex justify-content-between mb-3 fw-bold fs-5">
+        <span>TOTAL:</span>
+        <span id="cart-total" class="text-danger">$0</span>
+    </div>
+
+    <a href="checkout.html" class="btn btn-cherry-cart w-100 py-2">Finalizar Compra</a>
+
+</div>
+</div>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+🍒 ENVÍO GRATIS en compras mayores a $50.000 | NUEVA COLECCIÓN 2026
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+<div class="container">
+
+<a class="navbar-brand logo" href="#">Cherry</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+<ul class="navbar-nav mx-auto">
+<li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
+<li class="nav-item"><a class="nav-link" href="mujer.html">Mujer</a></li>
+<li class="nav-item"><a class="nav-link" href="hombre.html">Hombre</a></li>
+<li class="nav-item"><a class="nav-link" href="ofertas.html">Ofertas</a></li>
+</ul>
+
+<div class="d-flex align-items-center gap-3">
+    <a href="login.html" class="text-decoration-none text-dark d-flex align-items-center gap-2 hover-link">
+        <i class="bi bi-person-circle fs-4"></i>
+        <span class="small fw-bold d-none d-lg-inline">MI CUENTA</span>
+    </a>
+
+</div>
+
+<div class="nav-icons d-flex align-items-center gap-3">
+          <i class="bi bi-search fs-4"></i>
+          <i class="bi bi-heart fs-4"></i>
+          <div class="cart-icon position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" style="cursor: pointer;">
+              <i class="bi bi-bag fs-4"></i>
+              <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">0</span>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div id="cherryHeroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#cherryHeroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#cherryHeroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#cherryHeroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="4000">
+      <img src="images/banner index.png" class="d-block w-100 carousel-hero-img" alt="Nueva Colección Cherry">
+      <div class="carousel-caption text-start start-5">
+        <p class="small-title">TEMPORADA 2026</p>
+        <h2 class="main-title">NUEVA<br>COLECCIÓN</h2>
+        <a href="#productos" class="btn-carousel">DESCUBRIR</a>
+      </div>
+    </div>
+
+    <div class="carousel-item" data-bs-interval="4000">
+      <img src="images/banner carrusel.png" class="d-block w-100 carousel-hero-img" alt="Streetwear Style">
+      <div class="carousel-caption text-start start-5">
+        <p class="small-title">URBANO</p>
+        <h2 class="main-title">PARA TODOS<br>LOS ESTILOS</h2>
+        <a href="#productos" class="btn-carousel">VER MÁS</a>
+      </div>
+    </div>
+
+    <div class="carousel-item" data-bs-interval="4000">
+      <img src="images/bANNER PANTALONES.png" class="d-block w-100 carousel-hero-img" alt="Jeans Oversize">
+      <div class="carousel-caption text-start start-5">
+        <p class="small-title">DENIM PREMIUM</p>
+        <h2 class="main-title">CONOCE<br>NUESTRA ROPA</h2>
+        <a href="#productos" class="btn-carousel">COMPRAR YA</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#cherryHeroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#cherryHeroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>
+
+
+<!-- STATS -->
+<section class="stats">
+<div class="container">
+<div class="row text-center">
+
+<div class="col"><h3>500+</h3><p>ESTILOS</p></div>
+<div class="col"><h3>50+</h3><p>MARCAS</p></div>
+<div class="col"><h3>98%</h3><p>SATISFACCIÓN</p></div>
+
+</div>
+</div>
+</section>
+
+<!-- Productos -->
+<section id="productos" class="productos py-5">
+    <div class="container text-center">
+        <p class="sub text-uppercase fw-bold text-muted">Nuestra Colección</p>
+        <h2 class="display-5 fw-bold mb-4">Productos <span class="text-cherry">Destacados</span></h2>
+        <p class="desc">Calidad y elegancia en cada detalle.</p>
+        
+        <div class="filtros mb-5 d-flex justify-content-center gap-2 flex-wrap">
+            <button class="btn-filtro active">Todos</button>
+            <button class="btn-filtro">Camisas</button>
+            <button class="btn-filtro">Pantalones</button>
+            <button class="btn-filtro">Faldas</button>
+             <button class="btn-filtro">Zapatos</button>
+        </div>
+
+    <div class="row g-4">
+    <div class="col-6 col-md-4">
+    <div class="product-card-v2">
+        <div class="img-container">
+            <!-- Imagen del producto -->
+            <img src="imagenes/mas vendido 4- conjunto sudadera flores negra-convertido-de-png.webp " class="img-fluid">
+            
+            <!-- Badge de Oferta (Ese recuadro rojo abajo al centro) -->
+            <span class="badge-tag-discount">-31%</span>
+            
+            <!-- Botón Vista Rápida que aparece en el hover -->
+            <div class="hover-overlay">
+                <button class="btn-quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                       <i class="bi bi-eye"></i> Vista rápida
+                </button>
+            </div>
+        </div>
+
+        <div class="product-info text-start mt-3">
+            <p class="category-text mb-1">CONJUNTOS</p>
+            <h5 class="product-title fw-bold mb-1">Conjunto Sudadera Flores Negra</h5>
+            
+            <div class="rating-stars mb-2">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star text-muted"></i>
+                <span class="text-muted ms-1 small">(87)</span>
+            </div>
+
+            <div class="price-container mb-3">
+                <span class="current-price fw-bold">$89.900</span>
+                <span class="old-price text-decoration-line-through ms-2">$129.900</span>
+            </div>
+
+            <button class="btn btn-cherry-cart w-100 py-2" 
+                        onclick="addToCart({title: 'Conjunto Sudadera Flores Negra', price: 89900, img: 'imagenes/mas vendido 4- conjunto sudadera flores negra-convertido-de-png.webp'})">
+                   <i class="bi bi-bag-plus fs-5"></i> Agregar al carrito
+           </button>
+        </div>
+    </div>
+</div>
+       <div class="col-6 col-md-4">
+    <div class="product-card-v2">
+        <div class="img-container">
+            <!-- Imagen del producto -->
+            <img src="imagenes/blusas-camisas/camisa morado corset.PNG" class="img-fluid">
+            
+            <!-- Badge de Oferta (Ese recuadro rojo abajo al centro) -->
+            <span class="badge-tag-discount">Nuevo</span>
+            
+            <!-- Botón Vista Rápida que aparece en el hover -->
+            <div class="hover-overlay">
+                   <button class="btn-quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                       <i class="bi bi-eye"></i> Vista rápida
+                    </button>
+            </div>
+        </div>
+
+        <div class="product-info text-start mt-3">
+            <p class="category-text mb-1">CAMISAS</p>
+            <h5 class="product-title fw-bold mb-1">Corset Floral Romántico</h5>
+
+            <div class="rating-stars mb-2">
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star-fill text-warning"></i>
+                <i class="bi bi-star text-muted"></i>
+                <span class="text-muted ms-1 small">(87)</span>
+            </div>
+
+            <div class="price-container mb-3">
+                <span class="current-price fw-bold">$45.000</span>
+                <span class="old-price text-decoration-line-through ms-2">$59.900</span>
+            </div>
+
+            <button class="btn btn-cherry-cart w-100 py-2" 
+                        onclick="addToCart({title: 'Corset Floral Romántico', price: 45000, img: 'imagenes/blusas-camisas/camisa morado corset.PNG'})">
+                   <i class="bi bi-bag-plus fs-5"></i> Agregar al carrito
+           </button>
+        </div>
+    </div>
+</div>
+
+    <!-- PRODUCTO 1: JEANS -->
+    <div class="col-6 col-md-4">
+        <div class="product-card-v2">
+            <div class="img-container">
+                <img src="imagenes/jeans tirom alto azul.webp" class="img-fluid">
+                <span class="badge-tag-discount">Destacado</span>
+                <div class="hover-overlay">
+                      <button class="btn-quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                       <i class="bi bi-eye"></i> Vista rápida
+                    </button>
+                </div>
+            </div>    
+            <div class="product-info text-start mt-3">
+                <p class="category-text mb-1">PANTALONES</p>
+                <h5 class="product-title fw-bold mb-1">Jeans de Corte Ancho Azul</h5>
+                <div class="rating-stars mb-2">
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star text-muted"></i>
+                    <span class="text-muted ms-1 small">(87)</span>
+                </div>
+                <div class="price-container mb-3">
+                    <span class="current-price fw-bold">$56.000</span>
+                    <span class="old-price text-decoration-line-through ms-2">$66.900</span>
+                </div>
+               <button class="btn btn-cherry-cart w-100 py-2" 
+                        onclick="addToCart({title: 'Jeans Corte Ancho Azul', price: 56000, img: 'imagenes/jeans tirom alto azul.webp'})">
+                   <i class="bi bi-bag-plus fs-5"></i> Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </div> <!-- Cierre de Columna 1 -->
+
+    <!-- PRODUCTO 2: FALDA 1 -->
+    <div class="col-6 col-md-4">
+        <div class="product-card-v2">
+            <div class="img-container">
+                <img src="imagenes/falda blanca sencilla.webp" class="img-fluid">
+                <span class="badge-tag-discount">Destacado</span>
+                <div class="hover-overlay">
+                    <button class="btn-quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                       <i class="bi bi-eye"></i> Vista rápida
+                    </button>
+                </div>
+            </div>
+            <div class="product-info text-start mt-3">
+                <p class="category-text mb-1">FALDAS</p>
+                <h5 class="product-title fw-bold mb-1">Falda White Flate Sporty</h5>
+                <div class="rating-stars mb-2">
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star text-muted"></i>
+                    <span class="text-muted ms-1 small">(87)</span>
+                </div>
+                <div class="price-container mb-3">
+                    <span class="current-price fw-bold">$65.600</span>
+                    <span class="old-price text-decoration-line-through ms-2">$76.000</span>
+                </div>
+                <button class="btn btn-cherry-cart w-100 py-2" 
+                        onclick="addToCart({title: 'Falda White Flate Sporty', price: 65600, img: 'imagenes/falda blanca sencilla.webp'})">
+                   <i class="bi bi-bag-plus me-2"></i> Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </div> <!-- Cierre de Columna 2 -->
+
+    <!-- PRODUCTO 3: BLUSA 1( -->
+    <div class="col-6 col-md-4">
+        <div class="product-card-v2">
+            <div class="img-container">
+                <img src="imagenes/blusas-camisas/camisa con botones casual.webp" class="img-fluid">
+                <span class="badge-tag-discount">Favoritos</span>
+                <div class="hover-overlay">
+                       <button class="btn-quick-view" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#quickViewModal"
+                        onclick="llenarmodal(this)">
+                       <i class="bi bi-eye"></i> Vista rápida
+                    </button>
+                </div>
+            </div>
+            <div class="product-info text-start mt-3">
+                <p class="category-text mb-1">Camisas</p>
+                <h5 class="product-title fw-bold mb-1">Elegance Black Camisa Manga corta con cuello</h5>
+                <div class="rating-stars mb-2">
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star text-muted"></i>
+                    <span class="text-muted ms-1 small">(87)</span>
+                </div>
+                <div class="price-container mb-3">
+                    <span class="current-price fw-bold">$30.000</span>
+                    <span class="old-price text-decoration-line-through ms-2">$56.000</span>
+                </div>
+                <button class="btn btn-cherry-cart w-100 py-2" 
+                        onclick="addToCart({title: 'Elegance Black Camisa Manga corta con cuello', price: 30000, img: 'imagenes/blusas-camisas/camisa con botones casual.webp'})">
+                   <i class="bi bi-bag-plus fs-5"></i> Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </div> <!-- Cierre de Columna 3 -->
+<!--Producto 4 -->
+    <div class="col-6 col-md-4">
+        <div class="product-card-v2">
+            <div class="img-container">
+                <img id="qv-img" src="imagenes/Tenis casuales para mujer.webp" class="img-fluid">
+                <span class="badge-tag-discount">Favoritos</span>
+                <div class="hover-overlay">
+                   <button class="btn-quick-view" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                       <i class="bi bi-eye"></i> Vista rápida
+                    </button>
+                </div>
+            </div>
+            <div class="product-info text-start mt-3">
+                <p class="category-text mb-1">Zapatos</p>
+                <h5 class="product-title fw-bold mb-1">Zapatillas Cloud White</h5>
+                <div class="rating-stars mb-2">
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star text-muted"></i>
+                    <span class="text-muted ms-1 small">(87)</span>
+                </div>
+                <div class="price-container mb-3">
+                    <span class="current-price fw-bold">$45.000</span>
+                    <span class="old-price text-decoration-line-through ms-2">$68.000</span>
+                </div>
+                <button class="btn btn-cherry-cart w-100 py-2" 
+                        onclick="addToCart({title: 'Zapatillas Cloud White', price: 68800, img: 'imagenes/Tenis casuales para mujer.webp'})">
+                   <i class="bi bi-bag-plus fs-5"></i> Agregar al carrito
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+</div> <!-- CIERRE DE LA FILA (ROW) -->
+
+
+</section>
+
+<div class="container-boton">
+    <a href="#categorias" class="btn-outline-main text-decoration-none">
+        Ver toda la colección
+    </a>
+</div>
+
+</section>
+
+<!-- CATEGORÍAS -->
+<section class="categorias">
+<div class="container">
+<h2>Categorías</h2>
+
+<div class="row g-4">
+<div class="col-md-4">
+    <!-- Envolvemos todo el bloque en el enlace -->
+    <a href="faldas.html" class="text-decoration-none">
+        <div class="cat position-relative overflow-hidden">
+            <img src="images/banner vestidos.png" class="img-fluid" alt="Categoría Pantalones">
+            <div class="cat-overlay">
+                <span class="h4 text-white text-uppercase fw-bold">Vestidos</span>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-4">
+    <!-- Envolvemos todo el bloque en el enlace -->
+    <a href="camisas.html" class="text-decoration-none">
+        <div class="cat position-relative overflow-hidden">
+            <img src="images/BANNER TOPS.png" class="img-fluid" alt="Categoría Pantalones">
+            <div class="cat-overlay">
+                <span class="h4 text-white text-uppercase fw-bold">Camisas</span>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-4">
+    <!-- Envolvemos todo el bloque en el enlace -->
+   <a href="conjuntos.html" class="text-decoration-none">
+        <div class="cat position-relative overflow-hidden">
+            <img src="images/banner conjuntos.png" class="img-fluid" alt="Categoría Pantalones">
+            <div class="cat-overlay">
+                <span class="h4 text-white text-uppercase fw-bold">Conjuntos</span>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-4">
+    <!-- Envolvemos todo el bloque en el enlace -->
+    <a href="pantalones.html" class="text-decoration-none">
+        <div class="cat position-relative overflow-hidden">
+            <img src="images/bANNER PANTALONES.png" class="img-fluid" alt="Categoría Pantalones">
+            <div class="cat-overlay">
+                <span class="h4 text-white text-uppercase fw-bold">Pantalones</span>
+            </div>
+        </div>
+    </a>
+</div>
+
+<div class="col-md-4">
+    <!-- Envolvemos todo el bloque en el enlace -->
+    <a href="zapatos.html" class="text-decoration-none">
+        <div class="cat position-relative overflow-hidden">
+            <img src="images/Banerr zapatos.png" class="img-fluid" alt="Categoría Pantalones">
+            <div class="cat-overlay">
+                <span class="h4 text-white text-uppercase fw-bold">Zapatos</span>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+</div>
+
+</div>
+</section>
+
+<!-- SECCIÓN OFERTAS -->
+<section class="oferta-banner my-5">
+    <div class="container">
+        <div class="promo-card d-flex align-items-center justify-content-between p-5 rounded-5 shadow-lg">
+            <div class="promo-text text-white">
+                <span class="badge bg-white text-danger mb-2">⚡ OFERTA FLASH — SÓLO HOY</span>
+                <h2 class="display-3 fw-bold">HASTA <br>50% OFF</h2>
+                <p>En toda la colección de temporada. No dejes pasar esta oportunidad.</p>
+                <div class="promo-btns mt-4">
+                   <a href="ofertas.html" class="btn btn-light text-danger fw-bold me-2 px-4 py-2 rounded-pill text-decoration-none">
+                     Aprovechar Oferta →
+                    </a>
+                    <button class="btn btn-outline-light px-4 py-2 rounded-pill">Ver Catálogo</button>
+                </div>
+            </div>
+            <div class="promo-timer text-white text-center d-none d-md-block">
+                <p class="mb-2 small opacity-75 text-uppercase">La oferta termina en</p>
+                <div class="d-flex gap-3 justify-content-center">
+                    <div class="timer-box">
+                    <h3 id="promo-hours">07</h3>
+                    <small>HORAS</small></div>
+                    <span>:</span>
+                    <div class="timer-box">
+                        <h3 id="promo-minutes">26</h3>
+                        <small>MIN</small></div>
+                    <span>:</span>
+                    <div class="timer-box">
+                        <h3 id="promo-seconds">31</h3>
+                        <small>SEG</small></div>
+                </div>
+                <div class="discount-circle mt-4">50%<span>DESCUENTO</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIOS -->
+
+<section class="testimonios py-5 bg-light">
+    <div class="container text-center">
+        <p class="sub text-muted small fw-bold">LO QUE DICEN DE NOSOTROS</p>
+        <h2 class="mb-5">Nuestras <span class="text-danger">Clientas</span></h2>
+        
+        <div class="position-relative">
+            <button class="btn-scroll left" onclick="scrollTestimonios(-300)"><i class="bi bi-chevron-left"></i></button>
+            <button class="btn-scroll right" onclick="scrollTestimonios(300)"><i class="bi bi-chevron-right"></i></button>
+
+            <div class="testimonios-wrapper d-flex gap-4 pb-4" id="testimonios-container">
+                
+                <div class="testimonial-item">
+                    <div class="testimonial-card p-4 bg-white rounded-4 shadow-sm h-100">
+                        <div class="stars mb-3 text-danger">★★★★★</div>
+                        <p class="text-muted small italic">"Cherry cambió por completo mi forma de vestir. Los vestidos son increíbles, la calidad es superior a lo que esperaba."</p>
+                        <div class="user-info d-flex align-items-center justify-content-center mt-3">
+                            <div class="user-avatar me-2">VR</div>
+                            <div class="text-start">
+                                <h6 class="mb-0 small fw-bold">Valentina Reyes</h6>
+                                <small class="text-muted">Bogotá, Colombia</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-card p-4 bg-white rounded-4 shadow-sm h-100">
+                        <div class="stars mb-3 text-danger">★★★★★</div>
+                        <p class="text-muted small italic">"¡Increíble! Compré los Jeans de Corte Ancho y el calce es perfecto. Es difícil encontrar tiendas que logren esa calidad de tela."</p>
+                        <div class="user-info d-flex align-items-center justify-content-center mt-3">
+                            <div class="user-avatar me-2">VM</div>
+                            <div class="text-start">
+                                <h6 class="mb-0 small fw-bold">Valeria M.</h6>
+                                <small class="text-muted">Bogotá, Colombia</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-card p-4 bg-white rounded-4 shadow-sm h-100">
+                        <div class="stars mb-3 text-danger">★★★★★</div>
+                        <p class="text-muted small italic">"Amé la Falda White Flate. La usé para un evento y luego para salir, es súper versátil. El envío llegó rapidísimo."</p>
+                        <div class="user-info d-flex align-items-center justify-content-center mt-3">
+                            <div class="user-avatar me-2">CR</div>
+                            <div class="text-start">
+                                <h6 class="mb-0 small fw-bold">Camila Rojas</h6>
+                                <small class="text-muted">Cali, Colombia</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+    <div class="testimonial-card p-4 bg-white rounded-4 shadow-sm h-100">
+        <div class="stars mb-3 text-danger">★★★★★</div>
+        <p class="text-muted small italic">"Buscaba un estilo diferente y Cherry tiene ese toque moderno que no veo en otros lados. La atención por WhatsApp fue 10/10."</p>
+        <div class="user-info d-flex align-items-center justify-content-center mt-3">
+            <div class="user-avatar me-2">ML</div>
+            <div class="text-start">
+                <h6 class="mb-0 small fw-bold">Mariana Lopez</h6>
+                <small class="text-muted">Tolima, Colombia</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="testimonial-item">
+    <div class="testimonial-card p-4 bg-white rounded-4 shadow-sm h-100">
+        <div class="stars mb-3 text-danger">★★★★★</div>
+        <p class="text-muted small italic">"La calidad de las prendas superó mis expectativas. Las fotos no le hacen justicia a lo bien que se ven puestas. Ya estoy armando mi próximo carrito."</p>
+        <div class="user-info d-flex align-items-center justify-content-center mt-3">
+            <div class="user-avatar me-2">DC</div>
+            <div class="text-start">
+                <h6 class="mb-0 small fw-bold">Daniela Castro</h6>
+                <small class="text-muted">Cali, Colombia</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="testimonial-item">
+    <div class="testimonial-card p-4 bg-white rounded-4 shadow-sm h-100">
+        <div class="stars mb-3 text-danger">★★★★★</div>
+        <p class="text-muted small italic">"Mi primera compra fue un conjunto y me encantó. La tela es suave y no se deforma tras el lavado. Definitivamente mi nueva tienda favorita."</p>
+        <div class="user-info d-flex align-items-center justify-content-center mt-3">
+            <div class="user-avatar me-2">EG</div>
+            <div class="text-start">
+                <h6 class="mb-0 small fw-bold">Elena Gomez</h6>
+                <small class="text-muted">Bucaramanga, Colombia</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="testimonial-item">
+    <div class="testimonial-card p-4 bg-white rounded-4 shadow-sm h-100">
+        <div class="stars mb-3 text-danger">★★★★★</div>
+        <p class="text-muted small italic">"El empaque es precioso y los Jeans de tiro alto son la mejor inversión que he hecho. Hormas increíble y el color es idéntico a la web."</p>
+        <div class="user-info d-flex align-items-center justify-content-center mt-3">
+            <div class="user-avatar me-2">SP</div>
+            <div class="text-start">
+                <h6 class="mb-0 small fw-bold">Sofía Pérez</h6>
+                <small class="text-muted">Medellín, Colombia</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="testimonial-item">
+    <div class="testimonial-card p-4 bg-white rounded-4 shadow-sm h-100">
+        <div class="stars mb-3 text-danger">★★★★★</div>
+        <p class="text-muted small italic">"Super recomendada. Tenía dudas con mi talla y el equipo de Cherry me asesoró súper rápido. El envío a Bogotá fue impecable."</p>
+        <div class="user-info d-flex align-items-center justify-content-center mt-3">
+            <div class="user-avatar me-2">AR</div>
+            <div class="text-start">
+                <h6 class="mb-0 small fw-bold">Andrea Restrepo</h6>
+                <small class="text-muted">Bogotá, Colombia</small>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+        </div>
+    </div>
+</section>
+<!-- FOOTER -->
+<footer class="footer-pro bg-dark text-white pt-5 pb-3">
+    <div class="container">
+        <div class="row g-4 mb-5">
+            <div class="col-md-3">
+                <h2 class="logo text-danger mb-3">Cherry</h2>
+                <p class="small text-muted">Moda femenina moderna que celebra a 
+                    la mujer auténtica. 
+                   Calidad, estilo y confianza en cada prenda.</p>
+                <div class="contact-info small text-muted">
+                    <p><i class="bi bi-envelope me-2"></i> contactanos@cherryfashion.co</p>
+                    <p><i class="bi bi-telephone me-2"></i> +57 321 240 7075</p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <h6 class="fw-bold mb-4">Comprar</h6>
+                <ul class="list-unstyled small text-muted">
+                    <li class="mb-2">
+                       <a href="mujer.html" class="text-decoration-none text-muted"> Mujer </a>
+                       </li>
+                    <li class="mb-2">
+                        <a href="hombre.html" class="text-decoration-none text-muted">Hombre</a>
+                    </li>
+                    <li class="mb-2">
+                     <a href="ofertas.html" class="text-decoration-none text-muted">Ofertas</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h6 class="fw-bold mb-4">Ayuda</h6>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="faq.html" class="text-decoration-none text-muted">Preguntas frecuentes</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="rastreo.html">Rastrear pedido</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="devoluciones.html">Devoluciones</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="contacto.html">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h6 class="fw-bold mb-4 text-uppercase">Sé la primera en saberlo</h6>
+                <p class="small text-muted">Suscríbete y recibe novedades, looks exclusivos y un 10% de descuento.</p>
+                <div class="newsletter-box d-flex gap-2">
+                    <input type="email" class="form-control rounded-pill bg-transparent text-white border-secondary" placeholder="tu@email.com">
+                    <button class="btn btn-danger rounded-pill px-4">Suscribirse</button>
+                </div>
+            </div>
+        </div>
+        <hr class="border-secondary">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <p class="small text-muted mb-0">© 2026 Cherry Fashion. Todos los derechos reservados.</p>
+            <div class="payment-icons d-flex gap-2 opacity-50">
+                <i class="bi bi-credit-card-2-front fs-4"></i>
+                <i class="bi bi-wallet2 fs-4"></i>
+                <i class="bi bi-paypal fs-4"></i>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!----Modal vista rapida-->
+
+<div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content rounded-5 border-0 shadow-lg overflow-hidden">
+            <div class="modal-body p-0">
+                <button type="button" class="btn-close position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <div class="qv-image-container h-100">
+                            <img id="qv-img" src="" class="img-fluid h-100 w-100" style="object-fit: cover; min-height: 450px;" alt="Producto Cherry">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 p-4 p-lg-5 d-flex flex-column justify-content-center">
+                        <small id="qv-cat" class="text-uppercase text-muted fw-bold ls-2 mb-1" style="font-size: 0.7rem; letter-spacing: 2px;"></small>
+                        <h2 id="qv-name" class="fw-bold mb-3"></h2>
+                        
+                        <div class="qv-price mb-4">
+                            <span id="qv-price-new" class="fs-3 fw-bold text-dark"></span>
+                            <span id="qv-price-old" class="text-muted text-decoration-line-through ms-2 fs-5"></span>
+                        </div>
+                        
+                        <p class="text-muted small mb-4" id="qv-description">
+                            Nuestra prenda estrella diseñada para resaltar tu estilo con la calidad premium de Cherry. 
+                            Confeccionada con telas seleccionadas para garantizar durabilidad y un ajuste perfecto.
+                        </p>
+                        
+                        <div class="qv-sizes mb-4">
+                            <label class="fw-bold small mb-2 d-block">TALLA:</label>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-dark rounded-circle size-btn-modal">S</button>
+                                <button class="btn btn-outline-dark rounded-circle size-btn-modal">M</button>
+                                <button class="btn btn-outline-dark rounded-circle size-btn-modal">L</button>
+                            </div>
+                        </div>
+
+                        <button id="btnModalAgregar" class="btn btn-agregar w-100 rounded-pill mt-3">
+                          Añadir al carrito
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
